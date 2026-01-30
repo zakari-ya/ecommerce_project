@@ -8,7 +8,7 @@
     left: 0;
     right: 0;
     height: 70px;
-    background: var(--dark-gradient);
+    background: gray;
     display: flex;
     align-items: center;
     justify-content: space-between;
