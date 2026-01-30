@@ -1,0 +1,255 @@
+/* ===================================
+   HEADER COMPONENT STYLES
+   =================================== */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: var(--dark-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--spacing-lg);
+    box-shadow: var(--shadow-xl);
+    z-index: var(--z-header);
+    backdrop-filter: blur(10px);
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg,
+            rgba(102, 126, 234, 0.1) 0%,
+            rgba(118, 75, 162, 0.1) 100%);
+    pointer-events: none;
+}
+
+/* Left Section - Logo */
+.header .left-section {
+    display: flex;
+    align-items: center;
+    min-width: 180px;
+}
+
+.header .logo {
+    height: 40px;
+    width: auto;
+    transition: transform var(--transition-base);
+}
+
+.header .mobile-logo {
+    display: none;
+    height: 40px;
+    width: auto;
+    transition: transform var(--transition-base);
+}
+
+.header .logo:hover,
+.header .mobile-logo:hover {
+    transform: scale(1.05);
+}
+
+/* Middle Section - Search */
+.header .middle-section {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    max-width: 700px;
+    margin: 0 var(--spacing-xl);
+    position: relative;
+}
+
+.header .search-bar {
+    flex: 1;
+    height: 44px;
+    padding: 0 var(--spacing-md);
+    border: none;
+    border-radius: var(--radius-full) 0 0 var(--radius-full);
+    font-size: 15px;
+    background: white;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.header .search-bar:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2), var(--shadow-lg);
+    transform: translateY(-1px);
+}
+
+.header .search-button {
+    height: 44px;
+    width: 50px;
+    background: var(--secondary-gradient);
+    border: none;
+    border-radius: 0 var(--radius-full) var(--radius-full) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.header .search-button:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+.header .search-button:active {
+    transform: translateY(0);
+}
+
+.header .search-icon {
+    height: 20px;
+    width: 20px;
+    filter: brightness(0) invert(1);
+}
+
+/* Right Section - Links */
+.header .right-section {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    min-width: 180px;
+    justify-content: flex-end;
+}
+
+.header .header-link {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+.header .header-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.header .orders-link {
+    font-weight: var(--font-weight-semibold);
+}
+
+.header .orders-text {
+    font-size: 15px;
+}
+
+.header .cart-link {
+    position: relative;
+    gap: var(--spacing-xs);
+}
+
+.header .cart-icon {
+    height: 32px;
+    width: 32px;
+    filter: brightness(0) invert(1);
+}
+
+.header .cart-quantity {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    background: var(--secondary-gradient);
+    color: white;
+    font-size: 12px;
+    font-weight: var(--font-weight-bold);
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.header .cart-text {
+    font-size: 15px;
+    font-weight: var(--font-weight-semibold);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 1000px) {
+    .header {
+        padding: 0 var(--spacing-md);
+    }
+
+    .header .middle-section {
+        margin: 0 var(--spacing-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: 60px;
+        padding: 0 var(--spacing-sm);
+    }
+
+    .header .logo {
+        display: none;
+    }
+
+    .header .mobile-logo {
+        display: block;
+    }
+
+    .header .middle-section {
+        margin: 0 var(--spacing-md);
+    }
+
+    .header .search-bar {
+        font-size: 14px;
+        height: 38px;
+    }
+
+    .header .search-button {
+        height: 38px;
+        width: 44px;
+    }
+
+    .header .orders-text {
+        display: none;
+    }
+
+    .header .cart-text {
+        display: none;
+    }
+
+    .header .right-section {
+        gap: var(--spacing-md);
+    }
+}
+
+@media (max-width: 450px) {
+    .header .left-section {
+        min-width: auto;
+    }
+
+    .header .right-section {
+        min-width: auto;
+        gap: var(--spacing-sm);
+    }
+
+    .header .middle-section {
+        margin: 0 var(--spacing-sm);
+    }
+
+    .header .header-link {
+        padding: var(--spacing-xs);
+    }
+}

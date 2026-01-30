@@ -1,0 +1,274 @@
+/* ===================================
+   TRACKING PAGE
+   =================================== */
+
+.tracking-page {
+    margin-top: 70px;
+    min-height: calc(100vh - 70px);
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Order Tracking Container */
+.tracking-page .order-tracking {
+    max-width: 800px;
+    width: 100%;
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-2xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.tracking-page .order-tracking::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--success-gradient);
+}
+
+/* Back Link */
+.tracking-page .back-to-orders-link {
+    display: inline-flex;
+    align-items: center;
+    font-size: 15px;
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.tracking-page .back-to-orders-link::before {
+    content: '← ';
+    margin-right: var(--spacing-xs);
+}
+
+.tracking-page .back-to-orders-link:hover {
+    background: rgba(102, 126, 234, 0.1);
+    transform: translateX(-4px);
+}
+
+/* Delivery Date */
+.tracking-page .delivery-date {
+    font-size: 28px;
+    font-weight: var(--font-weight-bold);
+    background: var(--success-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+/* Product Info */
+.tracking-page .product-info {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+    font-weight: var(--font-weight-medium);
+}
+
+.tracking-page .product-info:first-of-type {
+    font-size: 19px;
+    color: var(--text-primary);
+    font-weight: var(--font-weight-semibold);
+    margin-top: var(--spacing-md);
+}
+
+/* Product Image */
+.tracking-page .product-image {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    display: block;
+    margin: var(--spacing-xl) auto;
+    padding: var(--spacing-md);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.tracking-page .product-image:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Progress Labels */
+.tracking-page .progress-labels-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-md);
+    position: relative;
+}
+
+.tracking-page .progress-label {
+    font-size: 16px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-light);
+    text-align: center;
+    flex: 1;
+    transition: all var(--transition-base);
+    position: relative;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+}
+
+.tracking-page .progress-label::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+    background: var(--border-color);
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.tracking-page .progress-label.current-status {
+    color: var(--success-color);
+    font-size: 18px;
+    background: rgba(75, 172, 254, 0.1);
+}
+
+.tracking-page .progress-label.current-status::before {
+    background: var(--success-gradient);
+    width: 32px;
+    height: 32px;
+    top: -34px;
+    box-shadow: var(--shadow-lg), 0 0 20px rgba(75, 172, 254, 0.4);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Progress Bar Container */
+.tracking-page .progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background: var(--border-light);
+    border-radius: var(--radius-full);
+    position: relative;
+    margin-top: var(--spacing-2xl);
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tracking-page .progress-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    /* Adjust based on current status */
+    background: var(--success-gradient);
+    border-radius: var(--radius-full);
+    box-shadow: 0 0 20px rgba(75, 172, 254, 0.6);
+    transition: width var(--transition-slow);
+    animation: progressPulse 2s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(75, 172, 254, 0.6);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(75, 172, 254, 0.9);
+    }
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 768px) {
+    .tracking-page {
+        margin-top: 60px;
+        min-height: calc(100vh - 60px);
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .tracking-page .order-tracking {
+        padding: var(--spacing-xl);
+    }
+
+    .tracking-page .delivery-date {
+        font-size: 22px;
+    }
+
+    .tracking-page .product-info:first-of-type {
+        font-size: 17px;
+    }
+
+    .tracking-page .product-image {
+        width: 160px;
+        height: 160px;
+    }
+
+    .tracking-page .progress-label {
+        font-size: 14px;
+        padding: var(--spacing-sm);
+    }
+
+    .tracking-page .progress-label.current-status {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 500px) {
+    .tracking-page {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    .tracking-page .order-tracking {
+        padding: var(--spacing-lg);
+    }
+
+    .tracking-page .delivery-date {
+        font-size: 20px;
+    }
+
+    .tracking-page .product-info:first-of-type {
+        font-size: 16px;
+    }
+
+    .tracking-page .product-image {
+        width: 140px;
+        height: 140px;
+    }
+
+    .tracking-page .progress-label {
+        font-size: 12px;
+        padding: var(--spacing-xs);
+    }
+
+    .tracking-page .progress-label::before {
+        width: 20px;
+        height: 20px;
+        top: -26px;
+    }
+
+    .tracking-page .progress-label.current-status::before {
+        width: 28px;
+        height: 28px;
+        top: -30px;
+    }
+
+    .tracking-page .progress-bar-container {
+        height: 6px;
+    }
+}
